@@ -33,6 +33,7 @@ public:
         // Pre Emi Calculation
         float pre_emi_intrest = Principal * Intrest;
         int total_pre_emi = pre_emi_intrest * 12;
+        long long int total_repay_amount = Principal * total_pre_emi;
         return total_pre_emi;
     }
 };
