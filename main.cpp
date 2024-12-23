@@ -20,9 +20,7 @@ public:
         cin >> TimePeriod;
     }
     float emi()
-    {
-        requirements();
-        
+    { 
         // EMI calaculator
         float temp = pow((1 + Intrest), TimePeriod);
         float EMI = ((Principal * Intrest * temp) / (temp - 1));
