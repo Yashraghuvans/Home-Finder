@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cmath> 
+#include <cmath>
 
 using namespace std;
 
@@ -27,37 +27,41 @@ public:
     }
 };
 
-class calculate : public data // Corrected class name
+class emi : public data
 {
 public:
-    float emi(long long int Principal, float Intrest, int TimePeriod) 
+    float calculate_emi()
     {
-        // EMI calculator
-        float temp = pow((1 + Intrest), TimePeriod); 
-        float EMI = ((Principal * Intrest * temp) / (temp - 1)); 
-        return EMI;
+        //Emi Calculation
+        float monthly_interest = Intrest / 12;
+        float temp = pow(1 + monthly_interest, TimePeriod * 12);
+        return (Principal * monthly_interest * temp) / (temp - 1);
     }
+};
 
-    float pre_emi(long long int Principal, float Intrest, int TimePeriod) 
+class pre_emi : public data
+{
+public:
+    float calculate_pre_emi()
     {
         // Pre Emi Calculation
         float pre_emi_intrest = Principal * Intrest;
-        int total_pre_emi = pre_emi_intrest * 12; 
-        long long int total_repay_amount = Principal * total_pre_emi; 
-        return total_pre_emi; 
+        int total_pre_emi = pre_emi_intrest * 12;
+        long long int total_repay_amount = Principal * total_pre_emi;
+        return total_pre_emi;
     }
 };
+
+class calculate : public emi, public pre_emi{
+
+};
+
 
 int main()
 {
     Requirements req;
-    req.requirements(); 
-
+    req.requirements();
     calculate calc;
-    float emi_value = calc.emi(req.Principal, req.Intrest, req.TimePeriod); 
-    float pre_emi_value = calc.pre_emi(req.Principal, req.Intrest, req.TimePeriod); 
-
-    
 
     return 0;
 }
