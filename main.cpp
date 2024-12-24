@@ -1,13 +1,17 @@
 #include <iostream>
 using namespace std;
 
-class Requirements
-{
-public:
+class data{
+    public:
     // All The Requirements To Calculate EMI
     long long int Principal;
     float Intrest;
     int TimePeriod;
+};
+
+class Requirements:public data
+{
+public:
     void requirements()
     {
 
